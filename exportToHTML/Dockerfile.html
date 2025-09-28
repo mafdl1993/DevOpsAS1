@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Dockerfile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Dockerfile</font>
+</center></td></tr></table>
+<pre><span class="s0"># Use uma versão mais recente do Python</span>
+<span class="s2">FROM </span><span class="s1">python:3</span><span class="s3">.</span><span class="s1">9</span>
+
+<span class="s0"># Defina o diretório de trabalho</span>
+<span class="s2">WORKDIR /</span><span class="s1">usr</span><span class="s2">/</span><span class="s1">src</span><span class="s2">/</span><span class="s1">app</span>
+
+<span class="s0"># Copie o arquivo requirements.txt e instale as dependências</span>
+<span class="s2">COPY </span><span class="s1">requirements</span><span class="s3">.</span><span class="s1">txt </span><span class="s3">.</span><span class="s2">/</span>
+<span class="s2">RUN </span><span class="s1">pip install </span><span class="s2">--</span><span class="s1">no-cache-dir </span><span class="s2">-</span><span class="s1">r requirements</span><span class="s3">.</span><span class="s1">txt</span>
+
+<span class="s0"># Copie o código da aplicação para dentro do container</span>
+<span class="s2">COPY </span><span class="s3">. .</span>
+
+<span class="s0"># Exponha a porta que o Uvicorn vai rodar</span>
+<span class="s2">EXPOSE </span><span class="s1">80</span>
+
+<span class="s0"># Comando para rodar a aplicação FastAPI com Uvicorn</span>
+<span class="s2">CMD </span><span class="s3">[</span><span class="s4">&quot;uvicorn&quot;</span><span class="s3">, </span><span class="s4">&quot;main:app&quot;</span><span class="s3">, </span><span class="s4">&quot;--host&quot;</span><span class="s3">, </span><span class="s4">&quot;0.0.0.0&quot;</span><span class="s3">, </span><span class="s4">&quot;--port&quot;</span><span class="s3">, </span><span class="s4">&quot;80&quot;</span><span class="s3">]</span>
+</pre>
+</body>
+</html>
