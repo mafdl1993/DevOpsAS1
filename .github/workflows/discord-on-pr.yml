@@ -3,6 +3,8 @@ name: Discord PR Notify
 on:
   pull_request:
     branches: ["main"]
+  push:
+    branches: ["main"]
 
 jobs:
   discord:
@@ -10,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-- name: Discord Notify
-  run: |
-    curl -H "Content-Type: application/json" \
-    -d '{"content":"🚀 Novo evento no repositório"}' \
-    ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Discord Notify
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{"content":"🚀 Novo evento no repositório"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
