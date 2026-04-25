@@ -2,7 +2,7 @@ name: Discord PR Notify
 
 on:
   pull_request:
-    branches: ["push"]
+    branches: ["main"]
 
 jobs:
   discord:
