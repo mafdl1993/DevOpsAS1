@@ -12,4 +12,4 @@ async def root():
 @app.get("/teste1")
 async def funcaoteste():
     return {"teste": True, "num_aleatorio": random.randint(0, 1000)}
-# Teste de PR para o Discord!!!
+# Teste de PR para o Discord - teste número 400 mil
